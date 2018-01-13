@@ -30,7 +30,7 @@ passport.use(
       // console.log('profile', profile);
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
-          console.log('user exist', JSON.stringify(user, 0, 2));
+          console.log('user exist', JSON.stringify(existingUser, 0, 2));
           done(null, existingUser);
         } else {
           new User({ googleId: profile.id }).save().then(user => {
