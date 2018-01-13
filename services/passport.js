@@ -30,11 +30,11 @@ passport.use(
       // console.log('profile', profile);
       User.findOne({ googleId: profile.id }).then(existingUser => {
         if (existingUser) {
-          console.log('user exist');
+          console.log('user exist', JSON.stringify(user, 0, 2));
           done(null, existingUser);
         } else {
           new User({ googleId: profile.id }).save().then(user => {
-            console.log('user', JSON.stringify(user, 0, 2));
+            console.log('create new user', JSON.stringify(user, 0, 2));
             done(null, user);
           });
         }
